@@ -1,0 +1,245 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1212693191219932}
+  m_IsPrefabAsset: 1
+--- !u!1 &1212693191219932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4282037624161094}
+  - component: {fileID: 114813764213534610}
+  m_Layer: 0
+  m_Name: HUDManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4282037624161094
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1212693191219932}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -47.843185, y: -25.168037, z: 91.17663}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114813764213534610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1212693191219932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1c2ed261dbcbb49b67fb1deabdf34f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelConfigList:
+  - LevelID: 0
+    GameType: 0
+    EnvironmentType: 0
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 1
+    GameType: 3
+    EnvironmentType: 0
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 2
+    GameType: 2
+    EnvironmentType: 0
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 3
+    GameType: 1
+    EnvironmentType: 0
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 4
+    GameType: 5
+    EnvironmentType: 0
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 5
+    GameType: 3
+    EnvironmentType: 0
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 6
+    GameType: 3
+    EnvironmentType: 1
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 7
+    GameType: 2
+    EnvironmentType: 1
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 8
+    GameType: 1
+    EnvironmentType: 1
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 9
+    GameType: 5
+    EnvironmentType: 1
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 10
+    GameType: 3
+    EnvironmentType: 1
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 11
+    GameType: 3
+    EnvironmentType: 2
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 12
+    GameType: 2
+    EnvironmentType: 2
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 13
+    GameType: 1
+    EnvironmentType: 2
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 14
+    GameType: 5
+    EnvironmentType: 2
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  - LevelID: 15
+    GameType: 3
+    EnvironmentType: 2
+    LevelLength: 500
+    LevelGapLength: 50
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  HeadIcons:
+  - {fileID: 21300000, guid: 4e536cf65af80cc41a1843ed2f346e6a, type: 3}
+  - {fileID: 21300000, guid: 793e227dd0e4ba442906a7406ef87c2a, type: 3}
+  - {fileID: 21300000, guid: 8a6b5a4b802e0444da8f05812c0ecfff, type: 3}
+  BodyIcons:
+  - {fileID: 21300000, guid: 2f979a9ebd623af40abb15c36d46946f, type: 3}
+  - {fileID: 21300000, guid: 98a051f5fbf42264f8ffc1dc42b96aba, type: 3}
+  - {fileID: 21300000, guid: c705d8cf2cd82a442b00a67946472d29, type: 3}
+  LegIcons:
+  - {fileID: 21300000, guid: 0ea7da03944f01c4a88ecbaa3b4cfa88, type: 3}
+  - {fileID: 21300000, guid: 59041a20b5982da4da8bc70d665dc6c6, type: 3}
+  - {fileID: 21300000, guid: dceecc534095c7a4e87b4b4c27d6a708, type: 3}
+  CityNightBackground:
+  - {fileID: 21300000, guid: 5bc09ce7fb32e1c478fcf2e2fbb18c51, type: 3}
+  - {fileID: 21300000, guid: a0e237c42fd71c34088423578c5cabee, type: 3}
+  - {fileID: 21300000, guid: 6a787e380c5be774989686a7352c82ea, type: 3}
+  - {fileID: 21300000, guid: 4206541b0dde8cd4e832b7e6f0d1a77f, type: 3}
+  - {fileID: 21300000, guid: 2681a9435e7776240995b10ff7c3ce7c, type: 3}
+  CityDayBackground:
+  - {fileID: 21300000, guid: 8be0eeea9f85b8048b24e11ac7efe4b1, type: 3}
+  - {fileID: 21300000, guid: 09aab4d1e49303b4ea7a36fed3451fbd, type: 3}
+  - {fileID: 21300000, guid: c424914d0d92c7c4a8901a26d674f784, type: 3}
+  - {fileID: 21300000, guid: 53c1622007002b940b74ac0f84f45b45, type: 3}
+  - {fileID: 21300000, guid: 5f5fc152387380b428299d319db7c103, type: 3}
+  CitySunsetBackground:
+  - {fileID: 21300000, guid: 6d6f2cc26ce45864a949fc0e3989e8ea, type: 3}
+  - {fileID: 21300000, guid: 2390bb6503caa5d4ba66ef3de36fc7cf, type: 3}
+  - {fileID: 21300000, guid: e50a68b233fbb2d4ab7dd83ed7d53eb3, type: 3}
+  - {fileID: 21300000, guid: 53d8f51c4cd37ac4eac8c743ffe0249c, type: 3}
+  - {fileID: 21300000, guid: 688b24a84b1bd804c910b882ab67da68, type: 3}
+  PanelDisplayHistory: []
+  OverlayPanel: {fileID: 0}
+  MainMenuPanel: {fileID: 0}
+  CharacterEditPanel: {fileID: 0}
+  LevelSelectionPanel: {fileID: 0}
+  SettingsPanel: {fileID: 0}
+  SelectedLevelConfig:
+    LevelID: 0
+    GameType: 0
+    EnvironmentType: 0
+    LevelLength: 0
+    LevelGapLength: 0
+    StartingTimeLength: 0
+    BossHealthAmount: 0
+    OutRunSpeedAverage: 0
+    CollectAmount: 0
+  BackgroundMovement: {fileID: 0}
