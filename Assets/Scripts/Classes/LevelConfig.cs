@@ -30,6 +30,7 @@ namespace Game.Interface
     /// <summary>
     /// Config for each level setup
     /// </summary>
+    [System.Serializable]
     public struct LevelConfig
     {
         /// <summary>
