@@ -73,6 +73,11 @@ namespace Game.Interface
         public static HUDManager Instance;
 
         /// <summary>
+        /// Delete File On Start
+        /// </summary>
+        public bool DeleteFileOnStart;
+
+        /// <summary>
         /// Awake this instance
         /// </summary>
         private void Awake()
@@ -85,6 +90,10 @@ namespace Game.Interface
         /// </summary>
         private void Start()
         {
+            //To prevent file reading errors
+            if (this.DeleteFileOnStart)
+                FileConfigHandler.DeleteFile();
+
             //Get level config from Save File
             FileConfigHandler.Load();
             this.SelectedLevelConfig = FileConfigHandler.Instance.UserConfig.LevelConfig;

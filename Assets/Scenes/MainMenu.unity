@@ -1672,6 +1672,11 @@ Prefab:
       propertyPath: BackgroundMovement
       value: 
       objectReference: {fileID: 1194971995}
+    - target: {fileID: 114813764213534610, guid: 69b8e504e26ede846989e6bf4c7b2e0c,
+        type: 2}
+      propertyPath: DeleteFileOnStart
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69b8e504e26ede846989e6bf4c7b2e0c, type: 2}
   m_IsPrefabAsset: 0

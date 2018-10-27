@@ -419,7 +419,7 @@ namespace Game.Interface
                 this._CurrentListOfSegments.Add(parkour);
             }
         }
-
+        
         /// <summary>
         /// Display Color
         /// </summary>
