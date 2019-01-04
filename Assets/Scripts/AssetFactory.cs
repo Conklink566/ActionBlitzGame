@@ -65,6 +65,11 @@ namespace Game.Interface
         public Sprite[] CitySunsetBackground;
 
         /// <summary>
+        /// The floor object that the play runs on
+        /// </summary>
+        public GameObject FloorSegment;
+
+        /// <summary>
         /// Awake this instance
         /// </summary>
         private void Awake()

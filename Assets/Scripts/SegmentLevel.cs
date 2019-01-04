@@ -10,7 +10,7 @@ namespace Game.Level
         /// <summary>
         /// List of Segments
         /// </summary>
-        public Segment[] ListOfSegments;
+        public GameObject FloorSegment;
 
         /// <summary>
         /// Adjust pivot for the next obstacle
@@ -20,19 +20,12 @@ namespace Game.Level
         /// <summary>
         /// Data Bind
         /// </summary>
-        public void DataBind()
+        public void DataBind(ref Vector3 position)
         {
-            for (int i = 0; i < this.ListOfSegments.Length; i++)
-            {
-                if (this.ListOfSegments[i] == null)
-                    continue;
-                this._AdjustPivot += new Vector3(this.ListOfSegments[i].GetComponent<BoxCollider2D>().size.x * 0.5f, 0.0f);
-                this.ListOfSegments[i].transform.localPosition = new Vector3(this._AdjustPivot.x, 0.0f, this.ListOfSegments[i].transform.localPosition.z);
-                this._AdjustPivot += new Vector3(this.ListOfSegments[i].GetComponent<BoxCollider2D>().size.x * 0.5f, 0.0f);
-                Manager.Instance.PivotPosition += new Vector3(this.ListOfSegments[i].GetComponent<BoxCollider2D>().size.x, Manager.Instance.PivotPosition.y);
-                this.ListOfSegments[i].GetComponent<Segment>().DataBind();
-            }
-            Manager.Instance.CheckPointList.Add(Manager.Instance.PivotPosition.x);
+            this._AdjustPivot += new Vector3(this.FloorSegment.GetComponent<BoxCollider2D>().size.x * 0.5f, 0.0f);
+            this.FloorSegment.transform.localPosition = new Vector3(this._AdjustPivot.x, 0.0f, this.FloorSegment.transform.localPosition.z);
+            this._AdjustPivot += new Vector3(this.FloorSegment.GetComponent<BoxCollider2D>().size.x * 0.5f, 0.0f);
+            position += new Vector3(this.FloorSegment.GetComponent<BoxCollider2D>().size.x, position.y);
         }
     }
 }

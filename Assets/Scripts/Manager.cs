@@ -4,6 +4,7 @@ using UnityEngine;
 using Game.Level;
 using Game.UI;
 using Game.Gameplay;
+using UnityEngine.SceneManagement;
 
 namespace Game.Interface
 {
@@ -48,6 +49,11 @@ namespace Game.Interface
         public Vector3 PivotPosition;
 
         /// <summary>
+        /// Floor Pivot Position
+        /// </summary>
+        public Vector3 FloorPivotPosition;
+
+        /// <summary>
         /// Checkpoint list
         /// </summary>
         public List<float> CheckPointList = new List<float>();
@@ -56,11 +62,6 @@ namespace Game.Interface
         /// List of different Segments
         /// </summary>
         public GameObject[] ParkourSegmentsList;
-
-        /// <summary>
-        /// List of Different Starting Segments
-        /// </summary>
-        public GameObject[] StartingParkourSegmentsList;
 
         /// <summary>
         /// Start Game Panel
@@ -114,11 +115,6 @@ namespace Game.Interface
         /// Max amount of segments spawned ahead of player
         /// </summary>
         public int MaxSegmentsSpawned = 3;
-
-        /// <summary>
-        /// Current Segment the player is on
-        /// </summary>
-        private int _CurrentSegment = 0;
 
         /// <summary>
         /// Speed Magnifier per percentage boost
@@ -270,6 +266,16 @@ namespace Game.Interface
         private float _TimeCurve = 0.0f;
 
         /// <summary>
+        /// For the Obsticales ending, prevent wierd placement at ending
+        /// </summary>
+        public float EndPadding;
+
+        /// <summary>
+        /// For the obsticales starting, prevent placement at the start of the level
+        /// </summary>
+        public float StartPadding;
+
+        /// <summary>
         /// Pause Game
         /// </summary>
         public bool PauseGame = false;
@@ -293,6 +299,8 @@ namespace Game.Interface
         /// </summary>
         private void Start()
         {
+            AudioManager.Instance.CurrentSceneDisplay = SceneManager.GetSceneByBuildIndex(2).name;
+            this.PlayerSpawned = false;
             this.ResetStats();
             this.CreateLevel();
         }
@@ -302,7 +310,8 @@ namespace Game.Interface
         /// </summary>
         private void Update()
         {
-            this.MainCamera.transform.position = this.PlayerFollow.transform.position + this.CameraAdjustment;
+            if(this.PlayerFollow != null)
+                this.MainCamera.transform.position = this.PlayerFollow.transform.position + this.CameraAdjustment;
             if (!this._StartGame)
                 return;
             if (this.GameState == GameState.Lose)
@@ -318,7 +327,7 @@ namespace Game.Interface
         public void RestartLevel()
         {
             this.ResetStats();
-            this.CreateLevel();
+            this.PlayerSpawn(StartingTypes.Starting);
         }
 
         /// <summary>
@@ -367,8 +376,7 @@ namespace Game.Interface
         public void ResetStats()
         {
             this.PivotPosition = Vector3.zero;
-            this.PlayerSpawned = false;
-            this._CurrentSegment = 0;
+            this.FloorPivotPosition = Vector3.zero;
             this.SpeedTargetModifier = 50.0f;
             this.SpeedCurrentModifier = 50.0f;
             this.SpeedMeter.AdjustDisplay(this.SpeedCurrentModifier);
@@ -406,17 +414,50 @@ namespace Game.Interface
         {
             this.ClearLevel();
             this._CurrentListOfSegments = new List<GameObject>();
-            float distanceCreated = 0.0f;
-            while(distanceCreated < FileConfigHandler.Instance.UserConfig.LevelConfig.LevelLength)
+            this.FloorPivotPosition = new Vector3(-this.StartPadding, 0.0f, 0.0f);
+            this.PivotPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            //Adding ending padding for increased length
+            while (this.FloorPivotPosition.x < FileConfigHandler.Instance.UserConfig.LevelConfig.LevelLength + EndPadding)
             {
-
+                GameObject floor = (GameObject)Instantiate(AssetFactory.Instance.FloorSegment);
+                floor.transform.position = this.FloorPivotPosition; 
+                floor.GetComponent<SegmentLevel>().DataBind(ref this.FloorPivotPosition);
+                this._CurrentListOfSegments.Add(floor);
             }
-            for (int i = 0; i < this.MaxSegmentsSpawned; i++)
+            //Minusing ending padding to reduce obsticales
+            while(this.PivotPosition.x < FileConfigHandler.Instance.UserConfig.LevelConfig.LevelLength - this.EndPadding)
             {
                 GameObject parkour = (GameObject)Instantiate(this.ParkourSegmentsList[Random.Range(0, this.ParkourSegmentsList.Length)]);
                 parkour.transform.position = this.PivotPosition;
-                parkour.GetComponent<SegmentLevel>().DataBind();
+                parkour.GetComponent<Segment>().DataBind(ref this.PivotPosition.x, 10.0f);
+                this.PivotPosition = new Vector3(this.PivotPosition.x + FileConfigHandler.Instance.UserConfig.LevelConfig.LevelGapLength, this.PivotPosition.y, this.PivotPosition.z);
                 this._CurrentListOfSegments.Add(parkour);
+            }
+            this.PlayerSpawn(StartingTypes.Starting);
+        }
+
+        /// <summary>
+        /// Spawning Player at location/location type
+        /// </summary>
+        public void PlayerSpawn(StartingTypes type)
+        {
+            switch(type)
+            {
+                case StartingTypes.Starting:
+                    if (!this.PlayerSpawned)
+                    {
+                        this.PlayerSpawned = true;
+                        GameObject playerObj = (GameObject)Instantiate(this.PlayerPreFab);
+                        this.PlayerFollow = playerObj;
+                        this.Player = playerObj.GetComponent<Player>();
+                    }
+                    SegmentLevel segment = this._CurrentListOfSegments[0].GetComponent<SegmentLevel>();
+                    this.Player.gameObject.transform.position = new Vector3(-this.StartPadding * 0.5f,
+                                                                            (segment.FloorSegment.GetComponent<BoxCollider2D>().size.y * 0.5f) + (this.Player.RunningCollider.size.y * 0.5f),
+                                                                            0.0f);
+                    break;
+                default:
+                    break;
             }
         }
         

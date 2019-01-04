@@ -80,6 +80,7 @@ namespace Game.UI
                 }
                 this.FadingBackgroundImage.sprite = this._NewBackgroundInput[3];
                 this.FadingBackgroundLightSource.sprite = this._NewBackgroundInput[4];
+
                 //this._ReceivedNewBackground = true;
             }
         }
@@ -258,6 +259,10 @@ namespace Game.UI
             //this.ResetLists();
             this.IsFadingIn = false;
             //this._ReceivedNewBackground = false;
+            if (HUDManager.Instance != null)
+                AudioManager.Instance.SetAudioClip(HUDManager.Instance.SelectedLevelConfig.EnvironmentType);
+            else
+                AudioManager.Instance.SetAudioClip(FileConfigHandler.Instance.UserConfig.LevelConfig.EnvironmentType);
         }
     }
 }

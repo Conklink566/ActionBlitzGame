@@ -18,31 +18,26 @@ namespace Game.Level
         private Vector3 _AdjustPivot;
 
         /// <summary>
-        /// Where a player can spawn
+        /// If there should be an inBetween or not
         /// </summary>
-        public GameObject SpawningPoint;
+        public bool InBetweenValueSet;
 
         /// <summary>
         /// Databind
         /// </summary>
-        public void DataBind()
+        public void DataBind(ref float position, float inBetween)
         {
+            this._AdjustPivot = Vector3.zero;
             for (int i = 0; i < this.ListofObstacles.Length; i++)
             {
                 if (this.ListofObstacles[i] == null)
                     continue;
-                this._AdjustPivot = new Vector3(0.0f, this.GetComponent<BoxCollider2D>().size.y * 0.5f * (this.ListofObstacles[i].UpwardsTransition ? 1.0f : -1.0f));
-                this._AdjustPivot += new Vector3(0.0f, this.ListofObstacles[i].GetComponent<BoxCollider2D>().size.y * 0.5f * (this.ListofObstacles[i].UpwardsTransition ? 1.0f : -1.0f));
-                this.ListofObstacles[i].gameObject.transform.localPosition = new Vector3(this.ListofObstacles[i].gameObject.transform.localPosition.x, this._AdjustPivot.y, this.ListofObstacles[i].gameObject.transform.localPosition.z);
+                this._AdjustPivot = new Vector3(this._AdjustPivot.x, ((AssetFactory.Instance.FloorSegment.GetComponentInChildren<BoxCollider2D>().size.y * 0.5f) + (this.ListofObstacles[i].GetComponent<BoxCollider2D>().size.y * 0.5f)) * (this.ListofObstacles[i].UpwardsTransition ? 1.0f : -1.0f), 0.0f);
+                this.ListofObstacles[i].gameObject.transform.localPosition = this._AdjustPivot;
+                this._AdjustPivot += new Vector3(this.ListofObstacles[i].GetComponent<BoxCollider2D>().size.x + (this.InBetweenValueSet ? inBetween : 0.0f), this.ListofObstacles[i].GetComponent<BoxCollider2D>().size.y * 0.5f * (this.ListofObstacles[i].UpwardsTransition ? 1.0f : -1.0f), 0.0f);
                 this.ListofObstacles[i].DataBind();
-            }
 
-            if(this.SpawningPoint != null &&
-               !Manager.Instance.PlayerSpawned)
-            {
-                Manager.Instance.PlayerSpawned = true;
-                GameObject player = (GameObject)Instantiate(Manager.Instance.PlayerPreFab, this.SpawningPoint.transform.position, Quaternion.identity);
-                Manager.Instance.PlayerFollow = player;
+                position += this.ListofObstacles[i].GetComponent<BoxCollider2D>().size.x + (this.InBetweenValueSet ? inBetween : 0.0f);
             }
         }
     }

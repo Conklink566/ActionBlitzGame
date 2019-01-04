@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Game.UI;
+using UnityEngine.SceneManagement;
 
 namespace Game.Interface
 {
@@ -9,9 +10,6 @@ namespace Game.Interface
 
     public class HUDManager : MonoBehaviour
     {
-        
-
-
         /// <summary>
         /// Panel Display History
         /// </summary>
@@ -90,6 +88,7 @@ namespace Game.Interface
         /// </summary>
         private void Start()
         {
+            AudioManager.Instance.CurrentSceneDisplay = SceneManager.GetSceneByBuildIndex(0).name;
             //To prevent file reading errors
             if (this.DeleteFileOnStart)
                 FileConfigHandler.DeleteFile();

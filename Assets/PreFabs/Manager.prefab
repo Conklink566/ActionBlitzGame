@@ -1,22 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1418157182109522}
-  m_IsPrefabParent: 1
 --- !u!1 &1418157182109522
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4699339278669178}
   - component: {fileID: 114221772068878630}
@@ -29,9 +19,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4699339278669178
 Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418157182109522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.08, z: 0}
@@ -42,9 +33,10 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114221772068878630
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418157182109522}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -53,22 +45,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeedMeter: {fileID: 0}
   PivotPosition: {x: 0, y: 0, z: 0}
+  FloorPivotPosition: {x: 0, y: 0, z: 0}
   CheckPointList: []
   ParkourSegmentsList:
-  - {fileID: 1066166521184164, guid: 8640e774149e0f44e9cc073508c9a1bb, type: 2}
-  - {fileID: 1747450672743300, guid: ec3309f7cb1e40d48b1f7c2a19058d40, type: 2}
-  - {fileID: 1199287678853932, guid: e694fb113a736004ba9fbdf84d260040, type: 2}
-  StartingParkouSegmentsList:
-  - {fileID: 1228879459768802, guid: 1f66fb6d79b1eb04986964352ea57c65, type: 2}
+  - {fileID: 1066166521184164, guid: 8640e774149e0f44e9cc073508c9a1bb, type: 3}
+  - {fileID: 1747450672743300, guid: ec3309f7cb1e40d48b1f7c2a19058d40, type: 3}
+  - {fileID: 1199287678853932, guid: e694fb113a736004ba9fbdf84d260040, type: 3}
   StartGamePanel: {fileID: 0}
   LostGamePanel: {fileID: 0}
   PauseGamePanel: {fileID: 0}
   SpeedDuckRequirement: 33
+  MaxSegmentsSpawned: 12
   SpeedMagnifier: 1
   SpeedDurationSpeed: 2
   _SpeedCurrentModifier: 0
   PlayerPreFab: {fileID: 1183201794616914, guid: 71ecd04c1b4e3a04abaae8f2ce4aad58,
-    type: 2}
+    type: 3}
   CameraAdjustment: {x: 20, y: 4.5, z: -10}
   MainCamera: {fileID: 0}
+  EndPadding: 50
+  StartPadding: 150
   PauseGame: 0
+  BackgroundMovement: {fileID: 0}
