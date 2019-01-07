@@ -251,9 +251,14 @@ namespace Game.Interface
         }
 
         /// <summary>
-        /// Adjust of the camera between the player
+        /// Adjust of the camera between the player, min
         /// </summary>
-        public Vector3 CameraAdjustment;
+        public Vector3 CameraAdjustmentMin;
+
+        /// <summary>
+        /// Adjust of the camera between the player, max
+        /// </summary>
+        public Vector3 CameraAdjustmentMax;
 
         /// <summary>
         /// Main Camera
@@ -286,6 +291,11 @@ namespace Game.Interface
         public BackgroundMovement BackgroundMovement;
 
         /// <summary>
+        /// Progression Bar
+        /// </summary>
+        public ProgressionBar ProgressionBar;
+
+        /// <summary>
         /// Awake this instance
         /// </summary>
         private void Awake()
@@ -310,15 +320,20 @@ namespace Game.Interface
         /// </summary>
         private void Update()
         {
-            if(this.PlayerFollow != null)
-                this.MainCamera.transform.position = this.PlayerFollow.transform.position + this.CameraAdjustment;
+            if (this.PlayerFollow != null)
+            {
+                //this.MainCamera.transform.position = this.PlayerFollow.transform.position + this.CameraAdjustmentMin;
+                this.MainCamera.transform.position = new Vector3(this.PlayerFollow.transform.position.x + Mathf.Lerp(this.CameraAdjustmentMin.x, this.CameraAdjustmentMax.x, this.SpeedCurrentModifier / 100.0f), this.CameraAdjustmentMin.y, this.CameraAdjustmentMin.z);
+            }
             if (!this._StartGame)
                 return;
-            if (this.GameState == GameState.Lose)
+            if (this.GameState == GameState.Lose ||
+                this.GameState == GameState.Win)
             {
                 return;
             }
             this.SpeedMeterAdjustment();
+            this.ProgressionBar.AdjustMarker(this.PlayerFollow.transform.position.x);
         }
 
         /// <summary>
@@ -368,6 +383,14 @@ namespace Game.Interface
                     this.Player.PlayerState = AnimationType.Run;
             }
             this.SpeedMeter.AdjustDisplay(this.SpeedCurrentModifier);
+        }
+
+        /// <summary>
+        /// Call the progression bar for adjusting
+        /// </summary>
+        private void DisplayProgressionBar()
+        {
+
         }
 
         /// <summary>
@@ -449,11 +472,10 @@ namespace Game.Interface
                         this.PlayerSpawned = true;
                         GameObject playerObj = (GameObject)Instantiate(this.PlayerPreFab);
                         this.PlayerFollow = playerObj;
-                        this.Player = playerObj.GetComponent<Player>();
                     }
                     SegmentLevel segment = this._CurrentListOfSegments[0].GetComponent<SegmentLevel>();
                     this.Player.gameObject.transform.position = new Vector3(-this.StartPadding * 0.5f,
-                                                                            (segment.FloorSegment.GetComponent<BoxCollider2D>().size.y * 0.5f) + (this.Player.RunningCollider.size.y * 0.5f),
+                                                                            (segment.FloorSegment.GetComponent<BoxCollider2D>().size.y * 0.5f) + (this.Player.RunningCollider.size.y * 0.5f) + (this.Player.RunningCollider.offset.y * -1.0f),
                                                                             0.0f);
                     break;
                 default:

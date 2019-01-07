@@ -61,9 +61,11 @@ MonoBehaviour:
   _SpeedCurrentModifier: 0
   PlayerPreFab: {fileID: 1183201794616914, guid: 71ecd04c1b4e3a04abaae8f2ce4aad58,
     type: 3}
-  CameraAdjustment: {x: 20, y: 4.5, z: -10}
+  CameraAdjustmentMin: {x: 23, y: 8, z: -10}
+  CameraAdjustmentMax: {x: 17, y: 8, z: -10}
   MainCamera: {fileID: 0}
   EndPadding: 50
   StartPadding: 150
   PauseGame: 0
   BackgroundMovement: {fileID: 0}
+  ProgressionBar: {fileID: 0}
