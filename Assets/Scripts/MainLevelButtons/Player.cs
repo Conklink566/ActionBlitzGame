@@ -217,6 +217,7 @@ namespace Game.Gameplay
         private void FixedUpdate()
         {
             if (Manager.Instance.GameState == GameState.Pause ||
+                Manager.Instance.GameState == GameState.Win ||
                 !Manager.Instance.StartGame)
             {
                 Manager.Instance.BackgroundMovement.Adjuster = 0.0f;
@@ -230,7 +231,7 @@ namespace Game.Gameplay
             float upWard = this.transform.position.y + upSpeed;
             this._Movement = new Vector2(moveForward, upWard);
             this._Rigidbody2D.MovePosition(this._Movement);
-            Manager.Instance.BackgroundMovement.Adjuster = this._Movement.x;
+            Manager.Instance.BackgroundMovement.Adjuster = speed * 200.0f;
             if (this.FallCheck(speed, upSpeed))
             {
                 //print("falling");

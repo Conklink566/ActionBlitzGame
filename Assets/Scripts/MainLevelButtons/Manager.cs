@@ -79,6 +79,11 @@ namespace Game.Interface
         public GameObject PauseGamePanel;
 
         /// <summary>
+        /// Pause Game Panel
+        /// </summary>
+        public GameObject WinGamePanel;
+
+        /// <summary>
         /// Speed ducking requirement
         /// </summary>
         public float SpeedDuckRequirement;
@@ -212,14 +217,21 @@ namespace Game.Interface
                         this.StartGamePanel.SetActive(false);
                         this.LostGamePanel.SetActive(true);
                         this.PauseGamePanel.SetActive(false);
+                        this.WinGamePanel.SetActive(false);
                         break;
                     case GameState.Pause:
                         this.Player.PlayerState = AnimationType.Idle;
                         this.StartGamePanel.SetActive(false);
                         this.LostGamePanel.SetActive(false);
                         this.PauseGamePanel.SetActive(true);
+                        this.WinGamePanel.SetActive(false);
                         break;
                     case GameState.Win:
+                        this.Player.PlayerState = AnimationType.Idle;
+                        this.StartGamePanel.SetActive(false);
+                        this.LostGamePanel.SetActive(false);
+                        this.PauseGamePanel.SetActive(false);
+                        this.WinGamePanel.SetActive(true);
                         break;
                     case GameState.Play:
                         if(this.Player != null)
@@ -227,6 +239,7 @@ namespace Game.Interface
                         this.StartGamePanel.SetActive(false);
                         this.LostGamePanel.SetActive(false);
                         this.PauseGamePanel.SetActive(false);
+                        this.WinGamePanel.SetActive(false);
                         break;
                     default:
                         break;
@@ -323,7 +336,14 @@ namespace Game.Interface
             if (this.PlayerFollow != null)
             {
                 //this.MainCamera.transform.position = this.PlayerFollow.transform.position + this.CameraAdjustmentMin;
-                this.MainCamera.transform.position = new Vector3(this.PlayerFollow.transform.position.x + Mathf.Lerp(this.CameraAdjustmentMin.x, this.CameraAdjustmentMax.x, this.SpeedCurrentModifier / 100.0f), this.CameraAdjustmentMin.y, this.CameraAdjustmentMin.z);
+                this.MainCamera.transform.position = new Vector3(this.PlayerFollow.transform.position.x + Mathf.Lerp(this.CameraAdjustmentMin.x, this.CameraAdjustmentMax.x, this.SpeedCurrentModifier / 100.0f), 
+                                                                 this.CameraAdjustmentMin.y, 
+                                                                 this.CameraAdjustmentMin.z);
+                if(this.PlayerFollow.transform.position.x >= FileConfigHandler.Instance.UserConfig.LevelConfig.LevelLength)
+                {
+                    this.GameState = GameState.Win;
+                }
+
             }
             if (!this._StartGame)
                 return;
@@ -386,14 +406,6 @@ namespace Game.Interface
         }
 
         /// <summary>
-        /// Call the progression bar for adjusting
-        /// </summary>
-        private void DisplayProgressionBar()
-        {
-
-        }
-
-        /// <summary>
         /// Reset Stats
         /// </summary>
         public void ResetStats()
@@ -438,7 +450,7 @@ namespace Game.Interface
             this.ClearLevel();
             this._CurrentListOfSegments = new List<GameObject>();
             this.FloorPivotPosition = new Vector3(-this.StartPadding, 0.0f, 0.0f);
-            this.PivotPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            this.PivotPosition = new Vector3(this.StartPadding * 0.25f, 0.0f, 0.0f);
             //Adding ending padding for increased length
             while (this.FloorPivotPosition.x < FileConfigHandler.Instance.UserConfig.LevelConfig.LevelLength + EndPadding)
             {

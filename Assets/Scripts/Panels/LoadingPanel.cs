@@ -48,7 +48,7 @@ namespace Game.UI
         IEnumerator LoadMainLevelScene()
         {
             yield return new WaitForSeconds(1.0f);
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(2);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync((int)SceneNames.MainLevel);
             asyncLoad.allowSceneActivation = false;
             // Wait until the asynchronous scene fully loads
             while (!asyncLoad.isDone)

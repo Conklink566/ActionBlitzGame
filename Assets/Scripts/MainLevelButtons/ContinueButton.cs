@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Game.Interface;
+using UnityEngine.SceneManagement;
 
 namespace Game.UI
 {
-    public class PlayButton : EventButton
+    public class ContinueButton : EventButton
     {
         /// <summary>
         /// ?Button Down
@@ -64,7 +64,7 @@ namespace Game.UI
             FileConfigHandler.Instance.UserConfig.LevelConfig = HUDManager.Instance.SelectedLevelConfig;
             FileConfigHandler.Save();
             //Load Main Scene
-            SceneManager.LoadScene((int)SceneNames.LoadingLevel);
+            SceneManager.LoadScene((int)SceneNames.MainMenu);
         }
 
         /// <summary>

@@ -6,6 +6,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Game.Interface
 {
+    public enum SceneNames
+    {
+        MainMenu,
+        LoadingLevel,
+        MainLevel
+    };
+
     public class FileConfigHandler : MonoBehaviour
     {
         /// <summary>

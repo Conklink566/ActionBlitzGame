@@ -140,6 +140,9 @@ namespace Game.UI
         /// </summary>
         public Color FadeOutColor;
 
+        /// <summary>
+        /// Start this instance
+        /// </summary>
         private void Start()
         {
             this.ResetLists();
