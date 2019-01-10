@@ -28,8 +28,11 @@ namespace Game.UI
         public override void OnPointerDown()
         {
             base.OnPointerDown();
+            if (Manager.Instance.SpeedCurrentModifier < Manager.Instance.SpeedDuckRequirement)
+                return;
             this._ButtonDown = true;
             Manager.Instance.Player.PlayerState = AnimationType.Duck;
+            AudioManager.Instance.CreateSoundEffect(SoundEffectType.Slide, Manager.Instance.PlayerFollow.transform.position);
         }
 
         /// <summary>
@@ -51,6 +54,8 @@ namespace Game.UI
         {
             base.OnPointerExit();
             this._ButtonDown = false;
+            if (Manager.Instance.GameState == GameState.Lose)
+                return;
             Manager.Instance.Player.PlayerState = Manager.Instance.Player.Falling ? AnimationType.Jump : AnimationType.Run;
         }
     }

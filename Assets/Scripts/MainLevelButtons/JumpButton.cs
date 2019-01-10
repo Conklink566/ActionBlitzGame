@@ -24,6 +24,7 @@ namespace Game.UI
         {
             base.OnPointerDown();
             Manager.Instance.Player.Jump();
+            AudioManager.Instance.CreateSoundEffect(SoundEffectType.Jump, Manager.Instance.PlayerFollow.transform.position);
         }
 
         /// <summary>

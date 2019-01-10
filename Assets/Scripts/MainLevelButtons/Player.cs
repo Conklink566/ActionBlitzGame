@@ -179,9 +179,17 @@ namespace Game.Gameplay
                 this.ArmBehindIcon.SetBool("Jump", AnimationType.Jump == this._PlayerState);
                 this.ArmBehindIcon.SetBool("Faint", AnimationType.Faint == this._PlayerState);
 
+                if(Manager.Instance.GameState == GameState.Lose)
+                {
+                    this.RunningCollider.enabled = false;
+                    this.DuckingCollider.enabled = true;
+                    this.SelectedCollider = this.DuckingCollider;
+                    return;
+                }
+
                 this.RunningCollider.enabled = AnimationType.Duck != this._PlayerState;
-                this.SelectedCollider = AnimationType.Duck != this._PlayerState ? this.RunningCollider : this.DuckingCollider;
                 this.DuckingCollider.enabled = AnimationType.Duck == this._PlayerState;
+                this.SelectedCollider = AnimationType.Duck != this._PlayerState ? this.RunningCollider : this.DuckingCollider;
 
             }
         }
@@ -251,6 +259,7 @@ namespace Game.Gameplay
                     this.Falling = false;
                     this.CurrentJump = 0;
                     this.CurrentJumpTime = 0.0f;
+                    AudioManager.Instance.CreateSoundEffect(SoundEffectType.Land, this.transform.position);
                 }
                 //print("running");
                 if (this.PlayerState != AnimationType.Run && Manager.Instance.GameState != GameState.Lose && this.PlayerState != AnimationType.Duck)
@@ -290,6 +299,7 @@ namespace Game.Gameplay
             {
                 Manager.Instance.GameState = GameState.Lose;
                 this.CurrentJumpTime = 0.0f;
+                AudioManager.Instance.CreateSoundEffect(SoundEffectType.Hit, this.transform.position);
             }
         }
 

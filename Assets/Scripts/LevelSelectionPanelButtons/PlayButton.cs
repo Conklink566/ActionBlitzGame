@@ -64,6 +64,7 @@ namespace Game.UI
             FileConfigHandler.Instance.UserConfig.LevelConfig = HUDManager.Instance.SelectedLevelConfig;
             FileConfigHandler.Save();
             //Load Main Scene
+            AudioManager.Instance.AudioSource.Stop();
             SceneManager.LoadScene((int)SceneNames.LoadingLevel);
         }
 

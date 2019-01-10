@@ -8,11 +8,12 @@ namespace Game.Interface
 {
     public enum SceneNames
     {
-        MainMenu,
-        LoadingLevel,
-        MainLevel
+        LoadingAssets       = 0,
+        MainMenu            = 1,
+        LoadingLevel        = 2,
+        MainLevel           = 3
     };
-
+    
     public class FileConfigHandler : MonoBehaviour
     {
         /// <summary>

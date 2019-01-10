@@ -5,7 +5,16 @@ using UnityEngine.SceneManagement;
 
 namespace Game.Interface
 {
-
+    /// <summary>
+    /// Type of sound effects
+    /// </summary>
+    public enum SoundEffectType
+    {
+        Jump,
+        Land,
+        Hit,
+        Slide
+    };
 
     public class AudioManager : MonoBehaviour
     {
@@ -17,7 +26,31 @@ namespace Game.Interface
         /// <summary>
         /// Get this component
         /// </summary>
-        private AudioSource _AudioSource;
+        public AudioSource AudioSource { get; private set; }
+
+        /// <summary>
+        /// Jump Sound
+        /// </summary>
+        [SerializeField]
+        private SoundEffectObject _JumpSound;
+
+        /// <summary>
+        /// Land Sound
+        /// </summary>
+        [SerializeField]
+        private SoundEffectObject _LandSound;
+
+        /// <summary>
+        /// GotHit Sound
+        /// </summary>
+        [SerializeField]
+        private SoundEffectObject _GotHitSound;
+
+        /// <summary>
+        /// Slide Sound
+        /// </summary>
+        [SerializeField]
+        private SoundEffectObject _SlideSound;
 
         /// <summary>
         /// List of Main Menu Clips
@@ -56,7 +89,7 @@ namespace Game.Interface
         /// </summary>
         private void Awake()
         {
-            this._AudioSource = this.GetComponent<AudioSource>();
+            this.AudioSource = this.GetComponent<AudioSource>();
             if (AudioManager.Instance == null)
             {
                 DontDestroyOnLoad(this.gameObject);
@@ -73,31 +106,60 @@ namespace Game.Interface
         /// </summary>
         public void SetAudioClip(EnvironmentTypes type)
         {
-            this._AudioSource.Stop();
+            if (SceneManager.GetActiveScene().name == SceneManager.GetSceneByBuildIndex((int)SceneNames.LoadingLevel).name ||
+                SceneManager.GetActiveScene().name == SceneManager.GetSceneByBuildIndex((int)SceneNames.LoadingAssets).name)
+                return;
+            this.AudioSource.Stop();
             switch(type)
             {
                 case EnvironmentTypes.CityDay:
                     if(SceneManager.GetSceneByBuildIndex(0).name == this.CurrentSceneDisplay && this._MainMenuClips.Length != 0)
-                        this._AudioSource.clip = this._MainMenuClips[0];
+                        this.AudioSource.clip = this._MainMenuClips[0];
                     else if (SceneManager.GetSceneByBuildIndex(2).name == this.CurrentSceneDisplay && this._MainLevelClips.Length != 0)
-                        this._AudioSource.clip = this._MainLevelClips[0];
+                        this.AudioSource.clip = this._MainLevelClips[0];
                     break;
                 case EnvironmentTypes.CityNight:
                     if (SceneManager.GetSceneByBuildIndex(0).name == this.CurrentSceneDisplay && this._MainMenuClips.Length != 0)
-                        this._AudioSource.clip = this._MainMenuClips[1];
+                        this.AudioSource.clip = this._MainMenuClips[1];
                     else if (SceneManager.GetSceneByBuildIndex(2).name == this.CurrentSceneDisplay && this._MainLevelClips.Length != 0)
-                        this._AudioSource.clip = this._MainLevelClips[1];
+                        this.AudioSource.clip = this._MainLevelClips[1];
                     break;
                 case EnvironmentTypes.CitySunset:
                     if (SceneManager.GetSceneByBuildIndex(0).name == this.CurrentSceneDisplay && this._MainMenuClips.Length != 0)
-                        this._AudioSource.clip = this._MainMenuClips[2];
+                        this.AudioSource.clip = this._MainMenuClips[2];
                     else if (SceneManager.GetSceneByBuildIndex(2).name == this.CurrentSceneDisplay && this._MainLevelClips.Length != 0)
-                        this._AudioSource.clip = this._MainLevelClips[2];
+                        this.AudioSource.clip = this._MainLevelClips[2];
                     break;
                 default:
                     break;
             }
-            this._AudioSource.Play();
+            this.AudioSource.Play();
+        }
+
+        /// <summary>
+        /// Create sound effect based off the call
+        /// </summary>
+        public void CreateSoundEffect(SoundEffectType type, Vector3 position)
+        {
+            GameObject effect = null;
+            switch(type)
+            {
+                case SoundEffectType.Hit:
+                    effect = (GameObject)Instantiate(this._GotHitSound.gameObject);
+                    break;
+                case SoundEffectType.Jump:
+                    effect = (GameObject)Instantiate(this._JumpSound.gameObject);
+                    break;
+                case SoundEffectType.Land:
+                    effect = (GameObject)Instantiate(this._LandSound.gameObject);
+                    break;
+                case SoundEffectType.Slide:
+                    effect = (GameObject)Instantiate(this._SlideSound.gameObject);
+                    break;
+                default:
+                    break;
+            }
+            effect.transform.position = position;
         }
     }
 }

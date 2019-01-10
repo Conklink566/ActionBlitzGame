@@ -7,7 +7,6 @@ namespace Game.UI
 {
     public class LevelSelectionButton : EventButton
     {
-
         /// <summary>
         /// HUDManager instance
         /// </summary>

@@ -39,7 +39,8 @@ namespace Game.UI
             base.OnPointerUp();
             if (!this._ButtonDown)
                 return;
-            SceneManager.LoadScene(0);
+            AudioManager.Instance.AudioSource.Stop();
+            SceneManager.LoadScene((int)SceneNames.LoadingAssets);
         }
 
         /// <summary>

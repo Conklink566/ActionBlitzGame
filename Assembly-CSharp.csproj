@@ -61,9 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AssetFactory.cs" />
-    <Compile Include="Assets\Scripts\AudioManager.cs" />
-    <Compile Include="Assets\Scripts\BackgroundMovement.cs" />
+    <Compile Include="Assets\Audio\SoundEffects\SoundEffectObject.cs" />
     <Compile Include="Assets\Scripts\CharacterEditorButtons\AccSkillDisplay.cs" />
     <Compile Include="Assets\Scripts\CharacterEditorButtons\CharacterApplyButton.cs" />
     <Compile Include="Assets\Scripts\CharacterEditorButtons\CharacterCancelButton.cs" />
@@ -82,41 +80,47 @@
     <Compile Include="Assets\Scripts\Classes\LevelConfig.cs" />
     <Compile Include="Assets\Scripts\Classes\Panel.cs" />
     <Compile Include="Assets\Scripts\Classes\UserConfig.cs" />
-    <Compile Include="Assets\Scripts\DuckButton.cs" />
-    <Compile Include="Assets\Scripts\FileConfigHandler.cs" />
-    <Compile Include="Assets\Scripts\HUDManager.cs" />
-    <Compile Include="Assets\Scripts\JumpButton.cs" />
     <Compile Include="Assets\Scripts\LevelSelectionPanelButtons\LevelBubble.cs" />
     <Compile Include="Assets\Scripts\LevelSelectionPanelButtons\LootQuestButton.cs" />
     <Compile Include="Assets\Scripts\LevelSelectionPanelButtons\PlayButton.cs" />
     <Compile Include="Assets\Scripts\LevelSelectionPanelButtons\PracticeButton.cs" />
     <Compile Include="Assets\Scripts\LevelSelectionPanelButtons\ScrollingLevelSelection.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\AssetFactory.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\BackgroundMovement.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\ContinueButton.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\DuckButton.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\FileConfigHandler.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\HUDManager.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\JumpButton.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\Manager.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\Obstacle.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\ObsticleStacking.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\PauseButton.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\Player.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\ProgressionBar.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\QuitButton.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\QuitToMenuButton.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\RestartLevelButton.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\Segment.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\SegmentLevel.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\SpeedAdjuster.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\SpeedMeter.cs" />
+    <Compile Include="Assets\Scripts\MainLevelButtons\StartGameScreenButton.cs" />
     <Compile Include="Assets\Scripts\MainPanelButtons\CharacterEditButton.cs" />
     <Compile Include="Assets\Scripts\MainPanelButtons\LevelSelectionButton.cs" />
     <Compile Include="Assets\Scripts\MainPanelButtons\SettingsButton.cs" />
-    <Compile Include="Assets\Scripts\Manager.cs" />
-    <Compile Include="Assets\Scripts\Obstacle.cs" />
-    <Compile Include="Assets\Scripts\ObsticleStacking.cs" />
     <Compile Include="Assets\Scripts\OverlayPanelButtons\BackButton.cs" />
     <Compile Include="Assets\Scripts\OverlayPanelButtons\MoreCrystalsButton.cs" />
     <Compile Include="Assets\Scripts\OverlayPanelButtons\MoreGoldButton.cs" />
     <Compile Include="Assets\Scripts\Panels\CharacterEditPanel.cs" />
     <Compile Include="Assets\Scripts\Panels\LevelSelectionPanel.cs" />
+    <Compile Include="Assets\Scripts\Panels\LoadingAssetsPanel.cs" />
     <Compile Include="Assets\Scripts\Panels\LoadingPanel.cs" />
     <Compile Include="Assets\Scripts\Panels\MainPanel.cs" />
     <Compile Include="Assets\Scripts\Panels\OverlayPanel.cs" />
     <Compile Include="Assets\Scripts\Panels\SettingsPanel.cs" />
-    <Compile Include="Assets\Scripts\PauseButton.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\QuitButton.cs" />
-    <Compile Include="Assets\Scripts\QuitToMenuButton.cs" />
-    <Compile Include="Assets\Scripts\RestartLevelButton.cs" />
-    <Compile Include="Assets\Scripts\Segment.cs" />
-    <Compile Include="Assets\Scripts\SegmentLevel.cs" />
     <Compile Include="Assets\Scripts\SettingsButtons\DeleteSaveButton.cs" />
-    <Compile Include="Assets\Scripts\SpeedAdjuster.cs" />
-    <Compile Include="Assets\Scripts\SpeedMeter.cs" />
-    <Compile Include="Assets\Scripts\StartGameScreenButton.cs" />
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>C:/Users/Public/Documents/Unity Projects/ActionBlitz/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>

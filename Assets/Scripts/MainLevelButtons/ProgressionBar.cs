@@ -52,5 +52,14 @@ namespace Game.UI
             this._ProgressionValue = newPosition / FileConfigHandler.Instance.UserConfig.LevelConfig.LevelLength;
             this.MarkIcon.anchoredPosition = new Vector2(this._ProgressionValue * this.ProgressionNumbers.y, 0.0f);
         }
+
+        /// <summary>
+        /// Resets the progression bar
+        /// </summary>
+        public void Reset()
+        {
+            this._ProgressionValue = 0.0f;
+            this.MarkIcon.anchoredPosition = new Vector2(this._ProgressionValue * this.ProgressionNumbers.y, 0.0f);
+        }
     }
 }

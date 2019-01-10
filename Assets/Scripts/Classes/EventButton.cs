@@ -28,6 +28,12 @@ namespace Game.UI
         public bool _ButtonInteraction = true;
 
         /// <summary>
+        /// AudioSource
+        /// </summary>
+        [SerializeField]
+        private AudioSource _AudioSource;
+
+        /// <summary>
         /// Button interaction Property
         /// </summary>
         public bool ButtonInteraction
@@ -68,6 +74,9 @@ namespace Game.UI
         {
             if (!this.ButtonInteraction)
                 return;
+            if (this._AudioSource != null &&
+                this._AudioSource.clip != null)
+                this._AudioSource.Play();
             this.EventDown = true;
             this.AssemblyTransform.sizeDelta = new Vector2(this._OriginalSize.x * this.AdjustmentScale, this._OriginalSize.y * this.AdjustmentScale);
         }

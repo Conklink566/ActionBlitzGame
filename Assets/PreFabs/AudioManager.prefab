@@ -149,6 +149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d0d2babc8d24b04a91f36262a58b307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _JumpSound: {fileID: 664657878565424430, guid: 4339be89fd6ac9f45aebf1d46adc1e33,
+    type: 3}
+  _LandSound: {fileID: 7345781701914013173, guid: 97be157a1e4861a45b18190749e66b9d,
+    type: 3}
+  _GotHitSound: {fileID: 2993233862899555202, guid: afaed36803962684b92a157fc803e121,
+    type: 3}
+  _SlideSound: {fileID: 1910244043305958124, guid: 5405362676e6baf44a0cf948c3fb689d,
+    type: 3}
   _MainMenuClips:
   - {fileID: 8300000, guid: 2d75b6188d5631d489c01b02353b9c4f, type: 3}
   - {fileID: 8300000, guid: 9addda878d7a8f94199a24a0175512ba, type: 3}

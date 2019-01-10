@@ -421,6 +421,7 @@ namespace Game.Interface
             this.GameState = GameState.Play;
             this.StartGame = false;
             this.StartGamePanel.SetActive(true);
+            this.ProgressionBar.Reset();
         }
 
         /// <summary>
